@@ -33,7 +33,7 @@ class User(models.Model):
 # on_delete=models.PROTECT will not allow referenced object to be deleted
 
 class Post(models.Model):
-    network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='None')
+    network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='Invalid')
     topic = models.CharField(max_length=100, default='Life')
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
