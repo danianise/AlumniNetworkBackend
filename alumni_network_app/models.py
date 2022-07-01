@@ -21,24 +21,21 @@ class User(models.Model):
     password = models.CharField(max_length=30)
     photo = models.ImageField(upload_to='images/')
     location = models.CharField(max_length=100)
-    socialmedia = models.ForeignKey(SocialMedia, null=True, on_delete=models.SET_NULL)
-    network = models.ForeignKey(Network, on_delete=models.PROTECT)
+    socialmedia = models.ForeignKey(SocialMedia, null=True, on_delete=models.SET_NULL, related_name='users')
+    network = models.ForeignKey(Network, on_delete=models.PROTECT, related_name='users')
     # can networks be plural? need option for more than one...
 # on_delete=models.SET_NULL will set this to null if referenced object is deleted
 # on_delete=models.PROTECT will not allow referenced object to be deleted
 
-class Conversation(models.Model):
-    network = models.ForeignKey(Network, on_delete=models.PROTECT)
-    topic = models.CharField(max_length = 100)
-
 class Post(models.Model):
-    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
+    network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='None')
+    topic = models.CharField(max_length=100, default='Life')
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     body = models.TextField()
 
-class Comments(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=100)
     body = models.TextField()
 
