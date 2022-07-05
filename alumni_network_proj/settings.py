@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +22,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ps^!m@a58s)n56ii6li8d8uiv*0ruz4vdfhdo&ch75!k&+nr$6'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ['MODE'] == 'dev' else False
 
-ALLOWED_HOSTS = []
+# The allowed hosts for your app depends on what front end apps you want to allow to connect
+# to your back end. This can prevent others from using your API, so you can add your deployed
+# front end app url to the list or you can use a '*' to allow anyone to connect to your app.
+ALLOWED_HOSTS = ['*']
+
+# To prevent access to your API from other applications add the
+# CORS_ALLOW_ORIGINS list and include only your front end app's
+# URLs (localhost and deployed).  This list prevents a front end 
+# from connecting to your back end unless it comes from a listed origin:
+
+# CORS_ALLOWED_ORIGINS = [
+#     "https://example.com",
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000"
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -38,17 +55,29 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'alumni_network_app',
+    'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 ROOT_URLCONF = 'alumni_network_proj.urls'
 
@@ -83,7 +112,9 @@ DATABASES = {
         'HOST': 'localhost',
     }
 }
-
+# DATABASES = {
+#   'default': dj_database_url.config(conn_max_age=600)
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -125,3 +156,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
