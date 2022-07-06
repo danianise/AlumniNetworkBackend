@@ -11,9 +11,9 @@ dj-database-url = "*"
 gunicorn = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
+pillow = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
-Pillow = "9.2.0"
