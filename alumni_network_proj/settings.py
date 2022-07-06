@@ -103,18 +103,18 @@ WSGI_APPLICATION = 'alumni_network_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'alumni_network',
-        'USER': 'alumni_network_user',
-        'PASSWORD': 'alumninetworkpassword',
-        'HOST': 'localhost',
-    }
-}
 # DATABASES = {
-#   'default': dj_database_url.config(conn_max_age=600)
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'alumni_network',
+#         'USER': 'alumni_network_user',
+#         'PASSWORD': 'alumninetworkpassword',
+#         'HOST': 'localhost',
+#     }
 # }
+DATABASES = {
+  'default': dj_database_url.config(conn_max_age=600)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
