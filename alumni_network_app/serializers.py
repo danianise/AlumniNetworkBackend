@@ -15,3 +15,19 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('network', 'topic', 'author', 'title', 'body', 'comments',)
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('name', 'email', 'password', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram', 'networks')
+
+class NetworkSerializer(serializers.ModelSerializer):
+    posts = PostSerializer(
+        many = True
+    )
+    users = UserSerializer(
+        many = True
+    )
+    class Meta:
+        model = Network
+        fields = ('name', 'location', 'logo', 'users', 'posts')
