@@ -16,3 +16,4 @@ djangorestframework = "*"
 
 [requires]
 python_version = "3.9"
+Pillow = "9.2.0"
