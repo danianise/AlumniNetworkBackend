@@ -7,6 +7,9 @@ class Network(models.Model):
     location = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='logos/')
 
+    def __str__(self):
+        return self.name
+
 # class SocialMedia(models.Model):
 #     linkedin = models.URLField(blank=True, null=True)
 #     github = models.URLField(blank=True, null=True)
@@ -31,6 +34,8 @@ class User(models.Model):
     # can networks be plural? need option for more than one...
 # on_delete=models.SET_NULL will set this to null if referenced object is deleted
 # on_delete=models.PROTECT will not allow referenced object to be deleted
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='Invalid')
@@ -39,8 +44,13 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
 
+    def __str__(self):
+        return self.title
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=100)
     body = models.TextField()
 
+    def __str__(self):
+        return self.author
