@@ -37,12 +37,12 @@ ALLOWED_HOSTS = ['*']
 # URLs (localhost and deployed).  This list prevents a front end 
 # from connecting to your back end unless it comes from a listed origin:
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://example.com",
-#     "http://localhost:3000",
-#     "http://127.0.0.1:3000"
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://blooming-waters-28022.herokuapp.com/",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
