@@ -5,7 +5,7 @@ from django.forms import CharField
 class Network(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='logos/')
+    logo = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -22,7 +22,7 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=30)
-    photo = models.ImageField(upload_to='images/')
+    photo = models.URLField(blank=True, null=True)
     location = models.CharField(max_length=100)
     # socialmedia = models.ForeignKey(SocialMedia, null=True, on_delete=models.SET_NULL, related_name='users')
     linkedin = models.URLField(blank=True, null=True)
