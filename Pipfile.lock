@@ -1,11 +1,10 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3ded62dd3136553a72e215acd47ebb86f13dd5cacda26a3e5fef6f4980bf8aef"
+            "sha256": "0e448d32bee1113880fbcbb6062aace4b5ddfb7b6f77bac802a3163928cbed24"
         },
         "pipfile-spec": 6,
         "requires": {
-            "Pillow": "9.2.0",
             "python_version": "3.9"
         },
         "sources": [
