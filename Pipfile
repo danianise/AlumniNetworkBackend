@@ -12,6 +12,7 @@ gunicorn = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
 pillow = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
