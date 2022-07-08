@@ -41,7 +41,6 @@ class Post(models.Model):
     network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='Invalid')
     topic = models.CharField(max_length=100, default='Life')
     author = models.CharField(max_length=100, default='anonymous')
-    title = models.CharField(max_length=100)
     body = models.TextField()
 
     def __str__(self):
