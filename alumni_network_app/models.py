@@ -40,16 +40,28 @@ class User(models.Model):
 class Post(models.Model):
     network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='Invalid')
     topic = models.CharField(max_length=100, default='Life')
-    author = models.CharField(max_length=100, default='anonymous')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     body = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.title
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    author = models.CharField(max_length=100)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.author
+
+class Event(models.Model):
+    name =  models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    dateTime = models.DateTimeField()
+    description = models.TextField()
+    network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='events', default='Network Unknown')
+
+    def __str__(self):
+        return self.name
