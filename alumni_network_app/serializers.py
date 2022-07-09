@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Network, User, Post, Comment
+from .models import Network, User, Post, Comment, Event
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,12 +14,17 @@ class PostSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Post
-        fields = ('network', 'topic', 'author', 'title', 'body', 'comments',)
+        fields = ('network', 'topic', 'author', 'body', 'comments',)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('name', 'email', 'password', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram', 'networks')
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = ('name', 'location', 'dateTime', 'description', 'network')
 
 class NetworkSerializer(serializers.ModelSerializer):
     posts = PostSerializer(
@@ -28,6 +33,9 @@ class NetworkSerializer(serializers.ModelSerializer):
     users = UserSerializer(
         many = True
     )
+    events = EventSerializer(
+        many = True
+    )
     class Meta:
         model = Network
-        fields = ('name', 'location', 'logo', 'users', 'posts')
+        fields = ('name', 'location', 'logo', 'users', 'posts', 'events')

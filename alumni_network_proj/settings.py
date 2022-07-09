@@ -31,7 +31,14 @@ DEBUG = True if os.environ['MODE'] == 'dev' else False
 # to your back end. This can prevent others from using your API, so you can add your deployed
 # front end app url to the list or you can use a '*' to allow anyone to connect to your app.
 ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = ['https://blooming-waters-28022.herokuapp.com/']
+# ALLOWED_HOSTS = [
+#     "https://blooming-waters-28022.herokuapp.com",
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+#     "https://radiant-tundra-28877.herokuapp.com",
+#     "http://localhost:8000",
+
+# ]
 
 # To prevent access to your API from other applications add the
 # CORS_ALLOW_ORIGINS list and include only your front end app's
