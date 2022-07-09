@@ -38,7 +38,7 @@ class User(models.Model):
         return self.name
 
 class Post(models.Model):
-    network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default='Invalid')
+    network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default=1)
     topic = models.CharField(max_length=100, default='Life')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     body = models.TextField()

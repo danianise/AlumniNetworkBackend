@@ -1,8 +1,13 @@
 from .serializers import EventSerializer, NetworkSerializer, PostSerializer, CommentSerializer, UserSerializer
 from rest_framework import generics, permissions
 from .models import Network, User, Post, Comment, Event
+from django.http import JsonResponse
 
 # Create your views here.
+
+def posts2(request):
+    print(request)
+    return JsonResponse('ok', safe = False)
 
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer

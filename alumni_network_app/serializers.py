@@ -7,14 +7,14 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('post', 'author', 'body',)
 
 class PostSerializer(serializers.ModelSerializer):
-    comments = CommentSerializer(
-        # view_name='CommentDetail',
-        many = True,
-        # read_only = True
-    )
+    # comments = CommentSerializer(
+    #     # view_name='CommentDetail',
+    #     many = True,
+    #     # read_only = True
+    # )
     class Meta:
         model = Post
-        fields = ('network', 'topic', 'author', 'body', 'comments',)
+        fields = ('network', 'topic', 'author', 'body',)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
