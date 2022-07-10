@@ -4,7 +4,7 @@ from .models import Network, User, Post, Comment, Event
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('post', 'author', 'body',)
+        fields = ('post', 'author', 'body')
 
 class PostSerializer(serializers.ModelSerializer):
     # comments = CommentSerializer(
