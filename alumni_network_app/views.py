@@ -5,10 +5,6 @@ from django.http import JsonResponse
 
 # Create your views here.
 
-def posts2(request):
-    print(request)
-    return JsonResponse('ok', safe = False)
-
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
