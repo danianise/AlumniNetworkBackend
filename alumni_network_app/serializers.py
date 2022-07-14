@@ -7,14 +7,15 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('post', 'author', 'body')
 
 class PostSerializer(serializers.ModelSerializer):
+    # timestamp = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     # comments = CommentSerializer(
-    #     # view_name='CommentDetail',
+    #     view_name='CommentDetail',
     #     many = True,
-    #     # read_only = True
+    #     read_only = True
     # )
     class Meta:
         model = Post
-        fields = ('network', 'topic', 'author', 'body',)
+        fields = ('network', 'topic', 'author', 'body', 'timestamp',)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

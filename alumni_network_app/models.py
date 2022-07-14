@@ -10,14 +10,6 @@ class Network(models.Model):
     def __str__(self):
         return self.name
 
-# class SocialMedia(models.Model):
-#     linkedin = models.URLField(blank=True, null=True)
-#     github = models.URLField(blank=True, null=True)
-#     facebook = models.URLField(blank=True, null=True)
-#     twitter = models.URLField(blank=True, null=True)
-#     instagram = models.URLField(blank=True, null=True)
-# blank=True and null=True so these fields can be blank
-
 class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=254)
@@ -31,9 +23,10 @@ class User(models.Model):
     twitter = models.URLField(blank=True, null=True)
     instagram = models.URLField(blank=True, null=True)
     networks = models.ForeignKey(Network, on_delete=models.PROTECT, related_name='users')
-    # can networks be plural? need option for more than one...
-# on_delete=models.SET_NULL will set this to null if referenced object is deleted
-# on_delete=models.PROTECT will not allow referenced object to be deleted
+        # can networks be plural? need option for more than one... **MANY TO MANY**
+    # on_delete=models.SET_NULL will set this to null if referenced object is deleted
+    # on_delete=models.PROTECT will not allow referenced object to be deleted
+
     def __str__(self):
         return self.name
 
