@@ -6,6 +6,7 @@ class Network(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     logo = models.URLField(blank=True, null=True)
+    # logo = models.FileField(upload_to='logos/', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -15,6 +16,7 @@ class User(models.Model):
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=30)
     photo = models.URLField(blank=True, null=True)
+    # image = models.FileField(upload_to='profileImages/', blank=True, null=True)
     location = models.CharField(max_length=100)
     # socialmedia = models.ForeignKey(SocialMedia, null=True, on_delete=models.SET_NULL, related_name='users')
     linkedin = models.URLField(blank=True, null=True)
@@ -34,8 +36,10 @@ class Post(models.Model):
     network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default=1)
     topic = models.CharField(max_length=100, default='Life')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
-    body = models.TextField()
+    body = models.TextField(blank=True, null=True)
+    # body field has blank and null in case user posts only an image
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
+    # image = models.FileField(upload_to='images/', blank=True, null=True)
 
     class Meta:
         ordering = ['timestamp']
@@ -46,8 +50,10 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    body = models.TextField()
+    body = models.TextField(blank=True, null=True)
+    # body field has blank and null in case user posts only an image
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
+    # image = models.FileField(upload_to='images/', blank=True, null=True)
 
     class Meta:
         ordering = ['timestamp']

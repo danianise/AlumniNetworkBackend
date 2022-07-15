@@ -10,11 +10,13 @@ urlpatterns = [
 
     path('posts/', views.PostList.as_view(), name = 'post_list'),
     path('posts/<int:pk>/', views.PostDetail.as_view(), name = 'post_detail'),
+    # path('posts/<int:post_id>/', views.PostDetail.as_view(), name = 'post_detail'),
     # path('posts_protected/', views.PostListProtected.as_view(), name='post_list_protected'),
     # path('posts2/', views.posts2),
 
     path('comments/', views.CommentList.as_view(), name = 'comment_list'),
     path('comments/<int:pk>/', views.CommentDetail.as_view(), name = 'comment_detail'),
+    # path('comments/<int:comment_id>/', views.CommentDetail.as_view(), name = 'comment_detail'),
 
     path('events/', views.EventList.as_view(), name = 'event_list'),
     path('events/<int:pk>/', views.EventDetail.as_view(), name = 'event_detail')

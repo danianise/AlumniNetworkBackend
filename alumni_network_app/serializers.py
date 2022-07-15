@@ -4,10 +4,9 @@ from .models import Network, User, Post, Comment, Event
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('post', 'author', 'body')
+        fields = ('id', 'post', 'author', 'body', 'timestamp')
 
 class PostSerializer(serializers.ModelSerializer):
-    # timestamp = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     # comments = CommentSerializer(
     #     view_name='CommentDetail',
     #     many = True,
@@ -15,7 +14,7 @@ class PostSerializer(serializers.ModelSerializer):
     # )
     class Meta:
         model = Post
-        fields = ('network', 'topic', 'author', 'body', 'timestamp',)
+        fields = ('id', 'network', 'topic', 'author', 'body', 'timestamp',)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
