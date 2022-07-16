@@ -11,8 +11,6 @@ urlpatterns = [
     path('posts/', views.PostList.as_view(), name = 'post_list'),
     path('posts/<int:pk>/', views.PostDetail.as_view(), name = 'post_detail'),
     # path('posts/<int:post_id>/', views.PostDetail.as_view(), name = 'post_detail'),
-    # path('posts_protected/', views.PostListProtected.as_view(), name='post_list_protected'),
-    # path('posts2/', views.posts2),
 
     path('comments/', views.CommentList.as_view(), name = 'comment_list'),
     path('comments/<int:pk>/', views.CommentDetail.as_view(), name = 'comment_detail'),

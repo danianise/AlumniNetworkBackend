@@ -5,35 +5,13 @@ from django.http import JsonResponse
 
 # Create your views here.
 
-class CommentList(generics.ListCreateAPIView):
-    serializer_class = CommentSerializer
-    queryset = Comment.objects.all()
+class NetworkList(generics.ListCreateAPIView):
+    serializer_class = NetworkSerializer
+    queryset = Network.objects.all()
 
-    # permission_classes = [permissions.IsAuthenticated]
-
-class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CommentSerializer
-    queryset = Comment.objects.all()
-
-    # permission_classes = [permissions.IsAuthenticated]
-
-class PostList(generics.ListCreateAPIView):
-    serializer_class = PostSerializer
-    queryset = Post.objects.all()
-
-    # permission_classes = [permissions.IsAuthenticated]
-
-# class PostListProtected(generics.ListCreateAPIView):
-#     serializer_class = PostSerializer
-#     queryset = Post.objects.all()
-
-#     permission_classes = [permissions.IsAuthenticated]
-
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = PostSerializer
-    queryset = Post.objects.all()
-
-    # permission_classes = [permissions.IsAuthenticated]
+class NetworkDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = NetworkSerializer
+    queryset = Network.objects.all()
 
 class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
@@ -43,34 +21,38 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-class NetworkList(generics.ListCreateAPIView):
-    serializer_class = NetworkSerializer
-    queryset = Network.objects.all()
+class PostList(generics.ListCreateAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
 
-class NetworkDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = NetworkSerializer
-    queryset = Network.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+
+    permission_classes = [permissions.IsAuthenticated]
 
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
 
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
-class CommentDetail(generics.RetrieveDestroyAPIView):
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
 
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 class EventList(generics.ListCreateAPIView):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
 
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
 
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]

@@ -1,5 +1,8 @@
 from rest_framework import serializers
+# from django.contrib.auth import get_user_model
 from .models import Network, User, Post, Comment, Event
+
+# User = get_user_model()
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
