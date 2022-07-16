@@ -45,7 +45,21 @@ class Post(models.Model):
         ordering = ['timestamp']
 
     def __str__(self):
-        return 'Post on {} by {}'.format(self.topic, self.author)
+        if len(self.body) < 20:
+            return 'Post {} on {} by {}'.format(self.body, self.topic, self.author)
+        else:
+            return 'Post {} on {} by {}'.format(self.body[:20] + '...', self.topic, self.author)
+
+# class Tweet(models.Model):
+#     uuid = models.UUIDField(unique=True, auto_created=True, default=uuid.uuid4)
+#     user_string = models.CharField(max_length=100, default='unknown_user')
+#     content = models.CharField(max_length=256)
+
+#     def __str__(self):
+#         if len(self.content) < 20:
+#             return str(self.content)
+#         else:
+#             return str( self.content[:20] + " ...")
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
