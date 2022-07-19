@@ -24,6 +24,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('name', 'email', 'password', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram', 'networks')
 
+
+
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event

@@ -13,7 +13,7 @@ class Network(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, default='error@nope.com')
     # email = models.CharField(max_length=100)
     password = models.CharField(max_length=30)
     photo = models.URLField(blank=True, null=True)

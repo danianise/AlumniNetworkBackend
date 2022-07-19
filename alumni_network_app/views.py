@@ -9,9 +9,13 @@ class NetworkList(generics.ListCreateAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
 
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 class NetworkDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NetworkSerializer
     queryset = Network.objects.all()
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
