@@ -1,7 +1,10 @@
 from .serializers import EventSerializer, NetworkSerializer, PostSerializer, CommentSerializer, UserSerializer
 from rest_framework import generics, permissions
-from .models import Network, User, Post, Comment, Event
+from .models import Network, Post, Comment, Event
 from django.http import JsonResponse
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 # Create your views here.
 
@@ -24,6 +27,12 @@ class UserList(generics.ListCreateAPIView):
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+# def UserInfo(request):
+#     # result = User.objects.get(id=pk)
+#     results = User.objects.all()
+#     print(results)
+#     return JsonResponse('working', safe=False)
 
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer

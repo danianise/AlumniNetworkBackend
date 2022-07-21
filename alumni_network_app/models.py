@@ -1,6 +1,7 @@
 from distutils.command.upload import upload
 from django.db import models
 from django.forms import CharField
+from django.contrib.auth.models import User
 
 class Network(models.Model):
     name = models.CharField(max_length=100)
@@ -11,11 +12,12 @@ class Network(models.Model):
     def __str__(self):
         return self.name
 
-class User(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254, default='error@nope.com')
-    # email = models.CharField(max_length=100)
-    password = models.CharField(max_length=30)
+# class User(models.Model):
+#     name = models.CharField(max_length=100)
+#     email = models.CharField(max_length=254)
+#     password = models.CharField(max_length=30)
+
+class Profile(models.Model):
     photo = models.URLField(blank=True, null=True)
     # image = models.FileField(upload_to='profileImages/', blank=True, null=True)
     location = models.CharField(max_length=100)
@@ -29,6 +31,7 @@ class User(models.Model):
         # can networks be plural? need option for more than one... **MANY TO MANY**
     # on_delete=models.SET_NULL will set this to null if referenced object is deleted
     # on_delete=models.PROTECT will not allow referenced object to be deleted
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name

@@ -1,8 +1,9 @@
 from rest_framework import serializers
-# from django.contrib.auth import get_user_model
-from .models import Network, User, Post, Comment, Event
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from .models import Network, Post, Comment, Event
 
-# User = get_user_model()
+User = get_user_model()
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,34 +11,34 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('id', 'post', 'author', 'body', 'timestamp')
 
 class PostSerializer(serializers.ModelSerializer):
-    # comments = CommentSerializer(
-    #     view_name='CommentDetail',
-    #     many = True,
-    #     read_only = True
-    # )
     class Meta:
         model = Post
-        fields = ('id', 'network', 'topic', 'author', 'body', 'timestamp',)
+        fields = ('id', 'network', 'topic', 'author', 'body', 'imageURL', 'timestamp',)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('name', 'email', 'password', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram', 'networks')
+        fields = ('username', 'first_name', 'last_name', 'id')
+
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('name', 'email', 'password', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram', 'networks')
 
 
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('name', 'location', 'dateTime', 'description', 'network')
+        fields = ('name', 'location', 'dateTime', 'description')
 
 class NetworkSerializer(serializers.ModelSerializer):
     posts = PostSerializer(
         many = True
     )
-    users = UserSerializer(
-        many = True
-    )
+    # users = UserSerializer(
+    #     many = True
+    # )
     events = EventSerializer(
         many = True
     )
