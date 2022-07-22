@@ -27,7 +27,7 @@ class Profile(models.Model):
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
     instagram = models.URLField(blank=True, null=True)
-    networks = models.ForeignKey(Network, on_delete=models.PROTECT, related_name='users')
+    networks = models.ForeignKey(Network, on_delete=models.PROTECT, related_name='users', default=1)
         # can networks be plural? need option for more than one... **MANY TO MANY**
     # on_delete=models.SET_NULL will set this to null if referenced object is deleted
     # on_delete=models.PROTECT will not allow referenced object to be deleted
