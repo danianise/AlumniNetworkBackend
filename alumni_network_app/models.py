@@ -34,7 +34,7 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
 
     def __str__(self):
-        return self.name
+        return 'Profile for user {}, {}'.format(self.user, self.location)
 
 class Post(models.Model):
     network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='posts', default=1)
