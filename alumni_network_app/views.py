@@ -24,13 +24,13 @@ class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
