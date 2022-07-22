@@ -1,9 +1,14 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
-from .models import Network, Post, Comment, Event
+from .models import Network, Post, Comment, Event, Profile
 
 User = get_user_model()
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('user', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram',)
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:

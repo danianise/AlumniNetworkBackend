@@ -1,6 +1,6 @@
-from .serializers import EventSerializer, NetworkSerializer, PostSerializer, CommentSerializer, UserSerializer
+from .serializers import EventSerializer, NetworkSerializer, PostSerializer, CommentSerializer, UserSerializer, ProfileSerializer
 from rest_framework import generics, permissions
-from .models import Network, Post, Comment, Event
+from .models import Network, Post, Comment, Event, Profile
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
 
@@ -31,6 +31,18 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
 
     # permission_classes = [permissions.IsAuthenticated]
+
+class ProfileList(generics.ListCreateAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+
+    permission_classes = [permissions.IsAuthenticated]
+
+class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+
+    permission_classes = [permissions.IsAuthenticated]
 
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
