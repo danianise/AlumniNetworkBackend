@@ -24,15 +24,13 @@ class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+    permission_classes = [permissions.IsAuthenticated]
+
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-# def UserInfo(request):
-#     # result = User.objects.get(id=pk)
-#     results = User.objects.all()
-#     print(results)
-#     return JsonResponse('working', safe=False)
+    permission_classes = [permissions.IsAuthenticated]
 
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
