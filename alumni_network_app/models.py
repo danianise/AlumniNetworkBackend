@@ -31,7 +31,7 @@ class Profile(models.Model):
         # can networks be plural? need option for more than one... **MANY TO MANY**
     # on_delete=models.SET_NULL will set this to null if referenced object is deleted
     # on_delete=models.PROTECT will not allow referenced object to be deleted
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
 
     def __str__(self):
         return self.name
