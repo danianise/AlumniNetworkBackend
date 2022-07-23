@@ -8,7 +8,7 @@ User = get_user_model()
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('user', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram',)
+        fields = ('user', 'photo', 'location', 'linkedin', 'github', 'facebook', 'twitter', 'instagram', 'id')
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
