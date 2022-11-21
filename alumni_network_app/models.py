@@ -84,7 +84,8 @@ class Comment(models.Model):
 class Event(models.Model):
     name =  models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    dateTime = models.DateTimeField()
+    # dateTime = models.DateTimeField()
+    dateTime = models.CharField(max_length=100)
     description = models.TextField()
     network = models.ForeignKey(Network, on_delete=models.CASCADE, related_name='events', default='Network Unknown')
 
